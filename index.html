@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darragh Gaule - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: linear-gradient(180deg, #5865f2 0%, #4752c4 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #36393f;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #5865f2, #7289da);
+            padding: 60px 20px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .status-icons {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            position: relative;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .online-indicator {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            background: #3ba55c;
+            border-radius: 50%;
+            border: 4px solid #36393f;
+        }
+        
+        .name {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .username {
+            font-size: 18px;
+            color: #b9bbbe;
+            margin-bottom: 20px;
+        }
+        
+        .edit-btn {
+            background: #5865f2;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .edit-btn:hover {
+            background: #4752c4;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .section {
+            margin-bottom: 24px;
+            background: #2f3136;
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .section-header {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #b9bbbe;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+        
+        .experience-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #40444b;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        
+        .company {
+            font-size: 14px;
+            color: #7289da;
+            margin-bottom: 8px;
+        }
+        
+        .achievement {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #dcddde;
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #5865f2;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .about-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #dcddde;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .contact-item {
+            font-size: 14px;
+            color: #7289da;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 16px;
+            background: #2f3136;
+            font-size: 12px;
+            color: #72767d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="status-icons">
+                <div class="status-icon">🎮</div>
+                <div class="status-icon">🎵</div>
+                <div class="status-icon">⚽</div>
+            </div>
+            
+            <div class="profile-pic">
+                🍀
+                <div class="online-indicator"></div>
+            </div>
+            
+            <div class="name">Darragh Gaule</div>
+            <div class="username">Performance Marketing → Account Management</div>
+            
+            <button class="edit-btn">📄 Download Full Resume</button>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <div class="section-header">Contact Info</div>
+                <div class="contact-info">
+                    <div class="contact-item">📧 darraghgauleis@protonmail.com</div>
+                    <div class="contact-item">📱 628-313-6831</div>
+                    <div class="contact-item">📍 San Francisco, California</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">Current Role</div>
+                <div class="experience-item">
+                    <div class="job-title">Manager, Global Paid Media</div>
+                    <div class="company">2K Games | Jul 2020 – Present</div>
+                    <div class="achievement">Lead global performance marketing for <span class="highlight">NBA 2K</span> and activation team across all major channels worldwide</div>
+                    <div class="achievement">Delivered <span class="highlight">7x conversion improvement</span> that became globally recognized case study</div>
+                    <div class="achievement">Built mobile gaming expertise with <span class="highlight">NBA 2K MyTeam Mobile</span> across US, EMEA, Asia</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">Key Achievements</div>
+                <div class="achievement">🏆 Transformed company from siloed to dynamic multi-objective buying approach</div>
+                <div class="achievement">📱 Navigated post-iOS14 attribution using SKAdNetwork and probabilistic modeling</div>
+                <div class="achievement">💰 Avoided <span class="highlight">seven-figure losses</span> through data-driven frameworks</div>
+                <div class="achievement">🔬 Internal thought leader on clean room and advanced analytics initiatives</div>
+                <div class="achievement">🌍 Manage partnerships with agencies across NA, EMEA, APAC</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">Gaming Skills</div>
+                <div class="skills-grid">
+                    <div class="skill-tag">Console Marketing</div>
+                    <div class="skill-tag">Mobile Gaming</div>
+                    <div class="skill-tag">Adjust MMP</div>
+                    <div class="skill-tag">SKAdNetwork</div>
+                    <div class="skill-tag">Meta AA</div>
+                    <div class="skill-tag">Google ADH</div>
+                    <div class="skill-tag">Amazon AMC</div>
+                    <div class="skill-tag">SQL & Python</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">About Me</div>
+                <div class="about-text">
+                    Dublin graduate who fell in love with gaming marketing and never looked back. Two-time national soccer champion turned data strategist. Vinyl collector with questionable taste in dive bars. Currently on a quest to find proper Guinness in SF (progress: disappointing). Love turning chaos into frameworks that actually work.
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">Why Discord?</div>
+                <div class="about-text">
+                    Looking to scale what I love most: building strategic relationships and turning data into creative solutions—but for multiple gaming clients instead of just one company. Ready to bring Irish charm and systematic thinking to Discord's growing advertising solutions team.
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">Education</div>
+                <div class="achievement">🎓 MSc Quantitative Finance - University of Amsterdam</div>
+                <div class="achievement">🎓 BA International Finance & Economics - Maynooth University (First Class Honours)</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Member since: The day I realized marketing could be as strategic as finance<br>
+            Status: Ready to level up with Discord's team
+        </div>
+    </div>
+</body>
+</html>
