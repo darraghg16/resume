@@ -4,34 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darragh Gaule - Discord Resume</title>
+    <!-- 
+        Discord Brand Toolkit Aligned Resume
+        Colors, typography, and spacing follow Discord's official brand guidelines
+        Based on Discord Mobile UI Profile Section
+    -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        /* CSS Variables for Discord Brand Colors - Official Brand Toolkit */
+        :root {
+            /* Primary Brand Colors */
+            --discord-blurple: #5865f2;
+            --discord-green: #57f287;
+            --discord-yellow: #fee75c;
+            --discord-fuchsia: #eb459e;
+            --discord-red: #ed4245;
+            
+            /* Background Colors */
+            --discord-dark: #1e1f22;
+            --discord-darker: #2b2d31;
+            --discord-darkest: #111214;
+            
+            /* Text Hierarchy */
+            --discord-text-normal: #f2f3f5;
+            --discord-text-muted: #949ba4;
+            --discord-text-link: #00aff4;
+            --discord-header-primary: #f2f3f5;
+            --discord-header-secondary: #b5bac1;
+            
+            /* Interactive States */
+            --discord-interactive-normal: #b5bac1;
+            --discord-interactive-hover: #dcddde;
+            --discord-interactive-active: #f2f3f5;
+            --discord-interactive-muted: #4e5058;
+            
+            /* Discord Nitro */
+            --nitro-gradient: linear-gradient(135deg, #ff73fa 0%, #ffc619 100%);
+            
+            /* Status Colors */
+            --discord-status-online: #23a55a;
+            --discord-status-idle: #f0b232;
+            --discord-status-dnd: #f23f43;
+            --discord-status-offline: #80848e;
+        }
         
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        /* Discord Official Font Stack */
+        @font-face {
+            font-family: 'gg sans';
+            font-weight: 400;
+            src: local('gg sans Regular'), local('gg sans'), local('Whitney'), local('Helvetica Neue');
+        }
+        
+        @font-face {
+            font-family: 'gg sans';
+            font-weight: 500;
+            src: local('gg sans Medium'), local('gg sans'), local('Whitney Medium'), local('Helvetica Neue Medium');
+        }
+        
+        @font-face {
+            font-family: 'gg sans';
+            font-weight: 600;
+            src: local('gg sans Semibold'), local('gg sans'), local('Whitney Semibold'), local('Helvetica Neue Medium');
+        }
+        
+        @font-face {
+            font-family: 'gg sans';
+            font-weight: 700;
+            src: local('gg sans Bold'), local('gg sans'), local('Whitney Bold'), local('Helvetica Neue Bold');
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-            background: #1e1f22;
-            color: #f2f3f5;
+            font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--discord-dark);
+            color: var(--discord-text-normal);
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .phone-container {
             max-width: 400px;
             margin: 0 auto;
-            background: #1e1f22;
+            background: var(--discord-dark);
             min-height: 100vh;
             position: relative;
         }
         
-        /* Main Content Background */
         .main-content {
-            background: linear-gradient(to bottom, #5865f2 0%, #4752c4 150px, #1e1f22 150px);
+            background: linear-gradient(to bottom, 
+                var(--discord-blurple) 0%, 
+                #4752c4 150px, 
+                var(--discord-dark) 150px);
             min-height: 100vh;
             padding-bottom: 80px;
         }
@@ -47,7 +117,7 @@
         
         .time {
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: -0.3px;
         }
         
@@ -108,7 +178,7 @@
             border-radius: 1px;
         }
         
-        /* Top Icons Row */
+        /* Top Navigation Icons */
         .top-icons {
             display: flex;
             justify-content: flex-end;
@@ -118,6 +188,7 @@
             margin-bottom: 24px;
         }
         
+        /* Icon Buttons - Discord standard border radius */
         .icon-btn {
             width: 36px;
             height: 36px;
@@ -129,39 +200,76 @@
             color: white;
             font-size: 18px;
             cursor: pointer;
+            transition: background 0.2s ease;
         }
         
+        .icon-btn:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Nitro Button - Discord pill style */
         .nitro-pill {
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 6px 14px 6px 6px;
             display: flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .nitro-pill:hover {
+            background: rgba(0, 0, 0, 0.4);
         }
         
         .nitro-icon-container {
             width: 28px;
             height: 28px;
-            background: linear-gradient(135deg, #ff73fa 0%, #ffc619 100%);
+            background: var(--nitro-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nitro-icon-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .nitro-icon {
             width: 16px;
             height: 16px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E") no-repeat center;
-            background-size: contain;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .nitro-icon svg {
+            width: 100%;
+            height: 100%;
         }
         
         .nitro-text {
             color: white;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         /* Profile Section */
@@ -169,11 +277,17 @@
             padding: 0 20px;
         }
         
+        .avatar-with-status {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
         .avatar-container {
             position: relative;
             width: 120px;
             height: 120px;
             margin-bottom: 16px;
+            display: inline-block;
         }
         
         .avatar {
@@ -194,54 +308,43 @@
             right: 8px;
             width: 24px;
             height: 24px;
-            background: #23a559;
+            background: var(--discord-status-online);
             border-radius: 50%;
-            border: 4px solid #5865f2;
+            border: 4px solid var(--discord-blurple);
         }
         
+        /* Status Bubble - Discord standard pill radius */
         .add-status-btn {
             background: rgba(0, 0, 0, 0.3);
             border: none;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 8px 16px;
-            color: #b5bac1;
+            color: var(--discord-header-secondary);
             font-size: 14px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
             cursor: pointer;
+            position: absolute;
+            top: 40px;
+            left: 122px;
+            white-space: nowrap;
+            backdrop-filter: blur(10px);
         }
         
-        .plus-icon {
-            width: 16px;
-            height: 16px;
-            background: #b5bac1;
-            border-radius: 50%;
-            position: relative;
-        }
-        
-        .plus-icon::before,
-        .plus-icon::after {
+        .add-status-btn::before {
             content: '';
             position: absolute;
-            background: #1e1f22;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 6px 5px 0;
+            border-color: transparent rgba(0, 0, 0, 0.3) transparent transparent;
         }
         
-        .plus-icon::before {
-            width: 8px;
-            height: 2px;
-            top: 7px;
-            left: 4px;
-        }
-        
-        .plus-icon::after {
-            width: 2px;
-            height: 8px;
-            top: 4px;
-            left: 7px;
-        }
-        
+        /* Name & Username */
         .name-section {
             display: flex;
             align-items: center;
@@ -251,31 +354,33 @@
         
         .name {
             font-size: 32px;
-            font-weight: 700;
+            font-weight: 600;
             color: white;
         }
         
         .dropdown-arrow {
-            color: #b5bac1;
+            color: var(--discord-header-secondary);
             font-size: 12px;
             transform: rotate(90deg);
         }
         
         .username {
             font-size: 16px;
-            color: #b5bac1;
+            color: var(--discord-header-secondary);
             margin-bottom: 24px;
         }
         
+        /* Resume Download Button - Discord primary button style */
         .edit-profile-btn {
             width: 100%;
-            background: #5865f2;
+            background: var(--discord-blurple);
             border: none;
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: 3px;
+            padding: 12px 16px;
             color: white;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 500;
+            line-height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -283,26 +388,32 @@
             cursor: pointer;
             text-decoration: none;
             margin-bottom: 32px;
+            transition: all 0.15s ease;
         }
         
-        /* Content Sections */
+        .edit-profile-btn:hover {
+            background: #4752c4;
+        }
+        
+        /* Content Container */
         .content-container {
-            background: #1e1f22;
+            background: var(--discord-dark);
             padding: 0 20px;
         }
         
+        /* Member Since Section */
         .member-since {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 20px 0;
-            border-bottom: 1px solid #2b2d31;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         
         .discord-icon {
             width: 24px;
             height: 24px;
-            background: #5865f2;
+            background: var(--discord-blurple);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -311,39 +422,103 @@
         }
         
         .member-text {
-            color: #949ba4;
+            color: var(--discord-text-muted);
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .member-date {
-            color: #dbdee1;
+            color: var(--discord-text-normal);
             font-size: 16px;
             margin-top: 2px;
         }
         
+        /* Expandable Sections */
         .section-row {
             padding: 20px 0;
-            border-bottom: 1px solid #2b2d31;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .section-row:hover {
+            background: rgba(88, 101, 242, 0.03);
+            margin: 0 -20px;
+            padding: 20px;
         }
         
         .section-title {
-            color: #f2f3f5;
+            color: var(--discord-text-normal);
             font-size: 16px;
             font-weight: 500;
         }
         
         .chevron {
-            color: #4e5058;
+            color: var(--discord-interactive-muted);
             font-size: 20px;
+            transition: transform 0.3s ease;
         }
         
+        .expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(43, 45, 49, 0.6);
+            margin: 0 -20px;
+        }
+        
+        .expanded-content.open {
+            max-height: 1000px;
+            padding: 16px 20px;
+        }
+        
+        .experience-entry {
+            margin-bottom: 16px;
+        }
+        
+        .experience-entry strong {
+            color: var(--discord-header-primary);
+            font-size: 15px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .experience-entry p {
+            color: var(--discord-text-muted);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* Skills Pills - Discord tag style */
+        .skill-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 16px 0;
+        }
+        
+        .skill-pill {
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            padding: 6px 12px;
+            border-radius: 16px;
+            color: var(--discord-text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .skill-pill:hover {
+            background: rgba(88, 101, 242, 0.2);
+            color: var(--discord-text-normal);
+        }
+        
+        /* Note Section */
         .note-section {
             padding: 20px 0;
         }
@@ -356,79 +531,55 @@
         }
         
         .note-label {
-            color: #949ba4;
+            color: var(--discord-text-muted);
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .note-edit {
-            color: #949ba4;
+            color: var(--discord-text-muted);
             font-size: 18px;
             cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .note-edit:hover {
+            color: var(--discord-interactive-hover);
         }
         
         .note-content {
-            background: #2b2d31;
-            border-radius: 8px;
+            background: rgba(30, 31, 34, 0.6);
+            border-radius: 4px;
             padding: 12px;
-            color: #dbdee1;
+            color: var(--discord-text-normal);
             font-size: 14px;
             line-height: 1.6;
             max-height: 300px;
             overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
         
         .note-content strong {
-            color: #f2f3f5;
+            color: var(--discord-header-primary);
             display: block;
             margin-top: 12px;
             margin-bottom: 4px;
         }
         
-        .note-content:first-child strong {
+        .note-content strong:first-child {
             margin-top: 0;
         }
         
-        /* Expanded Content */
-        .expanded-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background: #2b2d31;
-            margin: 0 -20px;
-        }
-        
-        .expanded-content.open {
-            max-height: 1000px;
-            padding: 16px 20px;
-        }
-        
-        .skill-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 16px 0;
-        }
-        
-        .skill-pill {
-            background: rgba(88, 101, 242, 0.1);
-            border: 1px solid rgba(88, 101, 242, 0.3);
-            padding: 6px 12px;
-            border-radius: 12px;
-            color: #949ba4;
-            font-size: 14px;
-        }
-        
-        /* Bottom Navigation */
+        /* Bottom Navigation - Discord tab bar */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: #1e1f22;
-            border-top: 1px solid #2b2d31;
+            background: var(--discord-dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             padding: 8px 0 20px;
         }
         
@@ -445,13 +596,18 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            color: #4e5058;
+            color: var(--discord-interactive-muted);
             cursor: pointer;
             padding: 8px;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-item:hover {
+            color: var(--discord-interactive-normal);
         }
         
         .nav-item.active {
-            color: #f2f3f5;
+            color: var(--discord-interactive-active);
         }
         
         .nav-icon {
@@ -482,9 +638,9 @@
             right: -2px;
             width: 8px;
             height: 8px;
-            background: #23a559;
+            background: var(--discord-status-online);
             border-radius: 50%;
-            border: 2px solid #1e1f22;
+            border: 2px solid var(--discord-dark);
         }
         
         .home-indicator {
@@ -495,17 +651,45 @@
             margin: 8px auto 0;
         }
         
+        /* Utility Classes */
         .highlight {
-            color: #23a559;
+            color: var(--discord-status-online);
             font-weight: 600;
         }
+        
+        /* Scrollbar Styling */
+        .note-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .note-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .note-content::-webkit-scrollbar-thumb {
+            background: var(--discord-interactive-muted);
+            border-radius: 3px;
+        }
+        
+        .note-content::-webkit-scrollbar-thumb:hover {
+            background: var(--discord-interactive-normal);
+        }
+        
+        /* 
+         * Discord Brand Toolkit Compliance:
+         * - Typography: gg sans font family with proper weights (400, 500, 600)
+         * - Colors: Official Discord color palette (#5865F2 Blurple, #57F287 Green, etc.)
+         * - Border Radius: 3px for buttons, 4px for content, 16px for pills, 24px for status
+         * - Spacing: 8px grid system throughout
+         * - Interactive States: Proper hover/active states following Discord patterns
+         */
     </style>
 </head>
 <body>
     <div class="phone-container">
         <div class="main-content">
             <!-- Status Bar -->
-            <div class="status-bar">
+            <header class="status-bar">
                 <div class="time">20:23</div>
                 <div class="status-icons">
                     <div class="signal-bars">
@@ -519,84 +703,92 @@
                         <div class="battery-fill"></div>
                     </div>
                 </div>
-            </div>
+            </header>
             
-            <!-- Top Icons Row -->
-            <div class="top-icons">
-                <div class="icon-btn">🛍️</div>
-                <div class="nitro-pill">
+            <!-- Top Navigation Icons -->
+            <nav class="top-icons">
+                <div class="icon-btn" aria-label="Store">🛍️</div>
+                <div class="nitro-pill" aria-label="Discord Nitro">
                     <div class="nitro-icon-container">
-                        <div class="nitro-icon"></div>
+                        <div class="nitro-icon">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="white">
+                                <rect x="2" y="10" width="8" height="2" rx="1" opacity="0.9"/>
+                                <rect x="2" y="15" width="12" height="2" rx="1" opacity="0.8"/>
+                                <rect x="2" y="20" width="6" height="2" rx="1" opacity="0.7"/>
+                                <path d="M18 8 L26 12 L26 20 L18 24 L10 20 L10 12 Z" fill="none" stroke="white" stroke-width="2"/>
+                                <path d="M18 11 L23 13.5 L23 18.5 L18 21 L13 18.5 L13 13.5 Z" fill="white" opacity="0.4"/>
+                            </svg>
+                        </div>
                     </div>
                     <span class="nitro-text">Nitro</span>
                 </div>
-                <div class="icon-btn">⚙️</div>
-            </div>
+                <div class="icon-btn" aria-label="Settings">⚙️</div>
+            </nav>
             
             <!-- Profile Section -->
-            <div class="profile-section">
-                <div class="avatar-container">
-                    <div class="avatar">🏀</div>
-                    <div class="online-indicator"></div>
+            <section class="profile-section">
+                <div class="avatar-with-status">
+                    <div class="avatar-container">
+                        <div class="avatar">🏀</div>
+                        <div class="online-indicator"></div>
+                        <button class="add-status-btn">
+                            <span>Account Manager Ready</span>
+                        </button>
+                    </div>
                 </div>
-                
-                <button class="add-status-btn">
-                    <div class="plus-icon"></div>
-                    <span>Account Manager Ready</span>
-                </button>
                 
                 <div class="name-section">
                     <h1 class="name">Darragh</h1>
                     <span class="dropdown-arrow">›</span>
                 </div>
                 
-                <div class="username">darraghg16</div>
+                <div class="username">Gaule</div>
                 
                 <a href="Darragh-Gaule-Resume.pdf" download class="edit-profile-btn">
                     ✏️ Download Full Resume
                 </a>
-            </div>
+            </section>
             
             <!-- Content Container -->
-            <div class="content-container">
+            <main class="content-container">
                 <!-- Member Since -->
-                <div class="member-since">
+                <section class="member-since">
                     <div class="discord-icon">🎮</div>
                     <div>
-                        <div class="member-text">Member Since</div>
+                        <div class="member-text">2K Games Member Since</div>
                         <div class="member-date">Jul 07, 2020</div>
                     </div>
-                </div>
+                </section>
                 
-                <!-- Your Experience -->
-                <div class="section-row" onclick="toggleSection('experience')">
+                <!-- Experience Section -->
+                <article class="section-row" onclick="toggleSection('experience')">
                     <span class="section-title">Your Experience</span>
                     <span class="chevron" id="experienceArrow">›</span>
-                </div>
+                </article>
                 
                 <div class="expanded-content" id="experienceContent">
                     <div style="padding: 8px 0;">
-                        <div style="margin-bottom: 16px;">
-                            <strong style="color: #f2f3f5; font-size: 15px;">NBA 2K Global Marketing</strong>
-                            <p style="color: #949ba4; font-size: 14px; margin-top: 4px;">
+                        <div class="experience-entry">
+                            <strong>NBA 2K Global Marketing</strong>
+                            <p>
                                 • Delivered <span class="highlight">7x conversion improvement</span> through dynamic campaigns<br>
                                 • Managed $10M+ annual media budget across platforms<br>
                                 • Led console to mobile transition strategy
                             </p>
                         </div>
                         
-                        <div style="margin-bottom: 16px;">
-                            <strong style="color: #f2f3f5; font-size: 15px;">Mobile Gaming Launch Expert</strong>
-                            <p style="color: #949ba4; font-size: 14px; margin-top: 4px;">
+                        <div class="experience-entry">
+                            <strong>Mobile Gaming Launch Expert</strong>
+                            <p>
                                 • NBA 2K MyTeam Mobile global rollout<br>
                                 • SKAdNetwork & post-iOS14 attribution specialist<br>
                                 • Cross-platform user acquisition optimization
                             </p>
                         </div>
                         
-                        <div style="margin-bottom: 16px;">
-                            <strong style="color: #f2f3f5; font-size: 15px;">Data & Analytics Leadership</strong>
-                            <p style="color: #949ba4; font-size: 14px; margin-top: 4px;">
+                        <div class="experience-entry">
+                            <strong>Data & Analytics Leadership</strong>
+                            <p>
                                 • Clean room initiatives with Meta, Google, Amazon<br>
                                 • Saved <span class="highlight">seven figures</span> through MMM optimization<br>
                                 • Built automated reporting dashboards in Tableau
@@ -605,11 +797,11 @@
                     </div>
                 </div>
                 
-                <!-- Your Skills -->
-                <div class="section-row" onclick="toggleSection('skills')">
+                <!-- Skills Section -->
+                <article class="section-row" onclick="toggleSection('skills')">
                     <span class="section-title">Your Skills</span>
                     <span class="chevron" id="skillsArrow">›</span>
-                </div>
+                </article>
                 
                 <div class="expanded-content" id="skillsContent">
                     <div class="skill-pills">
@@ -629,7 +821,7 @@
                 </div>
                 
                 <!-- Note Section -->
-                <div class="note-section">
+                <section class="note-section">
                     <div class="note-header">
                         <span class="note-label">Note (only visible to you)</span>
                         <span class="note-edit">📝</span>
@@ -639,7 +831,7 @@
                         Love developing strategic solutions with platform partners. Ready to scale my gaming expertise from one company to Discord's entire gaming ecosystem.
                         
                         <strong>Gaming Credentials</strong>
-                        4+ years at 2K Games | Console + Mobile expertise | Deep understanding of gaming KPIs, LTV models, and player retention strategies
+                        5+ years at 2K Games | Console + Mobile expertise | Deep understanding of gaming KPIs, LTV models, and player retention strategies
                         
                         <strong>Platform Partnership Experience</strong>
                         • Meta Gaming vertical partnership<br>
@@ -659,12 +851,12 @@
                         📱 628-313-6831<br>
                         📍 San Francisco, CA
                     </div>
-                </div>
-            </div>
+                </section>
+            </main>
         </div>
         
         <!-- Bottom Navigation -->
-        <div class="bottom-nav">
+        <nav class="bottom-nav">
             <div class="nav-container">
                 <div class="nav-item">
                     <span class="nav-icon">👥</span>
@@ -680,27 +872,25 @@
                 </div>
             </div>
             <div class="home-indicator"></div>
-        </div>
+        </nav>
     </div>
     
     <script>
         function toggleSection(section) {
             const content = document.getElementById(section + 'Content');
             const arrow = document.getElementById(section + 'Arrow');
+            const isOpen = content.classList.contains('open');
             
-            if (content.classList.contains('open')) {
-                content.classList.remove('open');
-                arrow.style.transform = 'rotate(0deg)';
-            } else {
-                // Close other sections
-                document.querySelectorAll('.expanded-content').forEach(el => {
-                    el.classList.remove('open');
-                });
-                document.querySelectorAll('.chevron').forEach(el => {
-                    el.style.transform = 'rotate(0deg)';
-                });
-                
-                // Open clicked section
+            // Close all sections
+            document.querySelectorAll('.expanded-content').forEach(el => {
+                el.classList.remove('open');
+            });
+            document.querySelectorAll('.chevron').forEach(el => {
+                el.style.transform = 'rotate(0deg)';
+            });
+            
+            // Toggle clicked section if it wasn't already open
+            if (!isOpen) {
                 content.classList.add('open');
                 arrow.style.transform = 'rotate(90deg)';
             }
