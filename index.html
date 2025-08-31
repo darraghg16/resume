@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darragh Gaule - Resume</title>
+    <title>Darragh Gaule - Discord Resume</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,60 +14,178 @@
         }
         
         body {
-            font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, #5865f2 0%, #4752c4 100%);
-            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: #1e1f22;
+            color: #f2f3f5;
             min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
         }
         
-        .container {
+        .phone-container {
             max-width: 400px;
             margin: 0 auto;
-            background: #36393f;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
-        
-        .header {
-            background: linear-gradient(90deg, #5865f2, #7289da);
-            padding: 60px 20px 20px;
-            text-align: center;
+            background: #1e1f22;
+            min-height: 100vh;
             position: relative;
         }
         
-        .status-icons {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            display: flex;
-            gap: 8px;
+        /* Main Content Background */
+        .main-content {
+            background: linear-gradient(to bottom, #5865f2 0%, #4752c4 150px, #1e1f22 150px);
+            min-height: 100vh;
+            padding-bottom: 80px;
         }
         
-        .status-icon {
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            color: white;
+        }
+        
+        .time {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .signal-bars {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+        }
+        
+        .signal-bar {
+            width: 3px;
+            background: white;
+            border-radius: 1px;
+        }
+        
+        .signal-bar:nth-child(1) { height: 4px; }
+        .signal-bar:nth-child(2) { height: 6px; }
+        .signal-bar:nth-child(3) { height: 9px; }
+        .signal-bar:nth-child(4) { height: 12px; }
+        
+        .wifi-icon {
+            width: 15px;
+            height: 15px;
+            margin: 0 3px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.65-4.35-1.65-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z'/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+        }
+        
+        .battery {
             width: 24px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.2);
+            height: 11px;
+            border: 1px solid white;
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .battery::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 2px;
+            width: 1.5px;
+            height: 6px;
+            background: white;
+            border-radius: 0 1px 1px 0;
+        }
+        
+        .battery-fill {
+            height: 100%;
+            width: 60%;
+            background: white;
+            border-radius: 1px;
+        }
+        
+        /* Top Icons Row */
+        .top-icons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
         }
         
-        .profile-pic {
+        .nitro-pill {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 6px 14px 6px 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .nitro-icon-container {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #ff73fa 0%, #ffc619 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nitro-icon {
+            width: 16px;
+            height: 16px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+        }
+        
+        .nitro-text {
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            padding: 0 20px;
+        }
+        
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 16px;
+        }
+        
+        .avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
-            position: relative;
-            border: 6px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         .online-indicator {
@@ -74,228 +194,517 @@
             right: 8px;
             width: 24px;
             height: 24px;
-            background: #3ba55c;
+            background: #23a559;
             border-radius: 50%;
-            border: 4px solid #36393f;
+            border: 4px solid #5865f2;
+        }
+        
+        .add-status-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #b5bac1;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            cursor: pointer;
+        }
+        
+        .plus-icon {
+            width: 16px;
+            height: 16px;
+            background: #b5bac1;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .plus-icon::before,
+        .plus-icon::after {
+            content: '';
+            position: absolute;
+            background: #1e1f22;
+        }
+        
+        .plus-icon::before {
+            width: 8px;
+            height: 2px;
+            top: 7px;
+            left: 4px;
+        }
+        
+        .plus-icon::after {
+            width: 2px;
+            height: 8px;
+            top: 4px;
+            left: 7px;
+        }
+        
+        .name-section {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
         }
         
         .name {
             font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .dropdown-arrow {
+            color: #b5bac1;
+            font-size: 12px;
+            transform: rotate(90deg);
         }
         
         .username {
-            font-size: 18px;
-            color: #b9bbbe;
-            margin-bottom: 20px;
+            font-size: 16px;
+            color: #b5bac1;
+            margin-bottom: 24px;
         }
         
-        .edit-btn {
+        .edit-profile-btn {
+            width: 100%;
             background: #5865f2;
             border: none;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .edit-btn:hover {
-            background: #4752c4;
-        }
-        
-        .content {
-            padding: 20px;
-        }
-        
-        .section {
-            margin-bottom: 24px;
-            background: #2f3136;
             border-radius: 8px;
-            padding: 16px;
-        }
-        
-        .section-header {
-            font-size: 12px;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: #b9bbbe;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-        }
-        
-        .experience-item {
-            margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #40444b;
-        }
-        
-        .experience-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .job-title {
+            padding: 12px;
+            color: white;
             font-size: 16px;
             font-weight: 600;
-            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 32px;
+        }
+        
+        /* Content Sections */
+        .content-container {
+            background: #1e1f22;
+            padding: 0 20px;
+        }
+        
+        .member-since {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 0;
+            border-bottom: 1px solid #2b2d31;
+        }
+        
+        .discord-icon {
+            width: 24px;
+            height: 24px;
+            background: #5865f2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .member-text {
+            color: #949ba4;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .member-date {
+            color: #dbdee1;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+        
+        .section-row {
+            padding: 20px 0;
+            border-bottom: 1px solid #2b2d31;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .section-title {
+            color: #f2f3f5;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .chevron {
+            color: #4e5058;
+            font-size: 20px;
+        }
+        
+        .note-section {
+            padding: 20px 0;
+        }
+        
+        .note-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        
+        .note-label {
+            color: #949ba4;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .note-edit {
+            color: #949ba4;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .note-content {
+            background: #2b2d31;
+            border-radius: 8px;
+            padding: 12px;
+            color: #dbdee1;
+            font-size: 14px;
+            line-height: 1.6;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .note-content strong {
+            color: #f2f3f5;
+            display: block;
+            margin-top: 12px;
             margin-bottom: 4px;
         }
         
-        .company {
-            font-size: 14px;
-            color: #7289da;
-            margin-bottom: 8px;
+        .note-content:first-child strong {
+            margin-top: 0;
         }
         
-        .achievement {
-            font-size: 14px;
-            line-height: 1.4;
-            color: #dcddde;
-            margin-bottom: 8px;
+        /* Expanded Content */
+        .expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #2b2d31;
+            margin: 0 -20px;
         }
         
-        .highlight {
-            color: #ffd700;
-            font-weight: 600;
+        .expanded-content.open {
+            max-height: 1000px;
+            padding: 16px 20px;
         }
         
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .skill-pills {
+            display: flex;
+            flex-wrap: wrap;
             gap: 8px;
+            padding: 16px 0;
         }
         
-        .skill-tag {
-            background: #5865f2;
+        .skill-pill {
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid rgba(88, 101, 242, 0.3);
             padding: 6px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            text-align: center;
+            border-radius: 12px;
+            color: #949ba4;
+            font-size: 14px;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1e1f22;
+            border-top: 1px solid #2b2d31;
+            padding: 8px 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #4e5058;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .nav-item.active {
+            color: #f2f3f5;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+        }
+        
+        .nav-label {
+            font-size: 11px;
             font-weight: 500;
         }
         
-        .about-text {
-            font-size: 14px;
-            line-height: 1.5;
-            color: #dcddde;
-        }
-        
-        .contact-info {
+        .nav-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .contact-item {
-            font-size: 14px;
-            color: #7289da;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 16px;
-            background: #2f3136;
+            align-items: center;
+            justify-content: center;
             font-size: 12px;
-            color: #72767d;
-            font-style: italic;
+            position: relative;
+        }
+        
+        .nav-avatar::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: #23a559;
+            border-radius: 50%;
+            border: 2px solid #1e1f22;
+        }
+        
+        .home-indicator {
+            width: 134px;
+            height: 5px;
+            background: white;
+            border-radius: 3px;
+            margin: 8px auto 0;
+        }
+        
+        .highlight {
+            color: #23a559;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="status-icons">
-                <div class="status-icon">🎮</div>
-                <div class="status-icon">🎵</div>
-                <div class="status-icon">⚽</div>
+    <div class="phone-container">
+        <div class="main-content">
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="time">20:23</div>
+                <div class="status-icons">
+                    <div class="signal-bars">
+                        <div class="signal-bar"></div>
+                        <div class="signal-bar"></div>
+                        <div class="signal-bar"></div>
+                        <div class="signal-bar"></div>
+                    </div>
+                    <div class="wifi-icon"></div>
+                    <div class="battery">
+                        <div class="battery-fill"></div>
+                    </div>
+                </div>
             </div>
             
-            <div class="profile-pic">
-                🍀
-                <div class="online-indicator"></div>
+            <!-- Top Icons Row -->
+            <div class="top-icons">
+                <div class="icon-btn">🛍️</div>
+                <div class="nitro-pill">
+                    <div class="nitro-icon-container">
+                        <div class="nitro-icon"></div>
+                    </div>
+                    <span class="nitro-text">Nitro</span>
+                </div>
+                <div class="icon-btn">⚙️</div>
             </div>
             
-            <div class="name">Darragh Gaule</div>
-            <div class="username">Performance Marketing → Account Management</div>
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="avatar-container">
+                    <div class="avatar">🏀</div>
+                    <div class="online-indicator"></div>
+                </div>
+                
+                <button class="add-status-btn">
+                    <div class="plus-icon"></div>
+                    <span>Account Manager Ready</span>
+                </button>
+                
+                <div class="name-section">
+                    <h1 class="name">Darragh</h1>
+                    <span class="dropdown-arrow">›</span>
+                </div>
+                
+                <div class="username">darraghg16</div>
+                
+                <a href="Darragh-Gaule-Resume.pdf" download class="edit-profile-btn">
+                    ✏️ Download Full Resume
+                </a>
+            </div>
             
-            <button class="edit-btn">📄 Download Full Resume</button>
+            <!-- Content Container -->
+            <div class="content-container">
+                <!-- Member Since -->
+                <div class="member-since">
+                    <div class="discord-icon">🎮</div>
+                    <div>
+                        <div class="member-text">Member Since</div>
+                        <div class="member-date">Jul 07, 2020</div>
+                    </div>
+                </div>
+                
+                <!-- Your Experience -->
+                <div class="section-row" onclick="toggleSection('experience')">
+                    <span class="section-title">Your Experience</span>
+                    <span class="chevron" id="experienceArrow">›</span>
+                </div>
+                
+                <div class="expanded-content" id="experienceContent">
+                    <div style="padding: 8px 0;">
+                        <div style="margin-bottom: 16px;">
+                            <strong style="color: #f2f3f5; font-size: 15px;">NBA 2K Global Marketing</strong>
+                            <p style="color: #949ba4; font-size: 14px; margin-top: 4px;">
+                                • Delivered <span class="highlight">7x conversion improvement</span> through dynamic campaigns<br>
+                                • Managed $10M+ annual media budget across platforms<br>
+                                • Led console to mobile transition strategy
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <strong style="color: #f2f3f5; font-size: 15px;">Mobile Gaming Launch Expert</strong>
+                            <p style="color: #949ba4; font-size: 14px; margin-top: 4px;">
+                                • NBA 2K MyTeam Mobile global rollout<br>
+                                • SKAdNetwork & post-iOS14 attribution specialist<br>
+                                • Cross-platform user acquisition optimization
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <strong style="color: #f2f3f5; font-size: 15px;">Data & Analytics Leadership</strong>
+                            <p style="color: #949ba4; font-size: 14px; margin-top: 4px;">
+                                • Clean room initiatives with Meta, Google, Amazon<br>
+                                • Saved <span class="highlight">seven figures</span> through MMM optimization<br>
+                                • Built automated reporting dashboards in Tableau
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Your Skills -->
+                <div class="section-row" onclick="toggleSection('skills')">
+                    <span class="section-title">Your Skills</span>
+                    <span class="chevron" id="skillsArrow">›</span>
+                </div>
+                
+                <div class="expanded-content" id="skillsContent">
+                    <div class="skill-pills">
+                        <span class="skill-pill">Meta Ads</span>
+                        <span class="skill-pill">Google Ads</span>
+                        <span class="skill-pill">TikTok Ads</span>
+                        <span class="skill-pill">SKAdNetwork</span>
+                        <span class="skill-pill">Clean Rooms</span>
+                        <span class="skill-pill">MMM/MTA</span>
+                        <span class="skill-pill">Console Marketing</span>
+                        <span class="skill-pill">Mobile UA</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Tableau</span>
+                        <span class="skill-pill">Agency Management</span>
+                    </div>
+                </div>
+                
+                <!-- Note Section -->
+                <div class="note-section">
+                    <div class="note-header">
+                        <span class="note-label">Note (only visible to you)</span>
+                        <span class="note-edit">📝</span>
+                    </div>
+                    <div class="note-content">
+                        <strong>Why Discord Account Management?</strong>
+                        Love developing strategic solutions with platform partners. Ready to scale my gaming expertise from one company to Discord's entire gaming ecosystem.
+                        
+                        <strong>Gaming Credentials</strong>
+                        4+ years at 2K Games | Console + Mobile expertise | Deep understanding of gaming KPIs, LTV models, and player retention strategies
+                        
+                        <strong>Platform Partnership Experience</strong>
+                        • Meta Gaming vertical partnership<br>
+                        • Google Play strategic relationship<br>
+                        • Apple Search Ads optimization<br>
+                        • TikTok Gaming beta programs
+                        
+                        <strong>About Me</strong>
+                        Dublin → SF journey | Two-time national soccer champion ⚽ | Vinyl collector (deep house bias) | Still searching for proper Guinness in California 🍺
+                        
+                        <strong>Education</strong>
+                        • MSc Quantitative Finance - Amsterdam<br>
+                        • BA International Finance & Economics - Maynooth (First Class)
+                        
+                        <strong>Contact</strong>
+                        📧 darraghgauleis@protonmail.com<br>
+                        📱 628-313-6831<br>
+                        📍 San Francisco, CA
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="content">
-            <div class="section">
-                <div class="section-header">Contact Info</div>
-                <div class="contact-info">
-                    <div class="contact-item">📧 darraghgauleis@protonmail.com</div>
-                    <div class="contact-item">📱 628-313-6831</div>
-                    <div class="contact-item">📍 San Francisco, California</div>
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-container">
+                <div class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Home</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🔔</span>
+                    <span class="nav-label">Notifications</span>
+                </div>
+                <div class="nav-item active">
+                    <div class="nav-avatar">🏀</div>
+                    <span class="nav-label">You</span>
                 </div>
             </div>
-            
-            <div class="section">
-                <div class="section-header">Current Role</div>
-                <div class="experience-item">
-                    <div class="job-title">Manager, Global Paid Media</div>
-                    <div class="company">2K Games | Jul 2020 – Present</div>
-                    <div class="achievement">Lead global performance marketing for <span class="highlight">NBA 2K</span> and activation team across all major channels worldwide</div>
-                    <div class="achievement">Delivered <span class="highlight">7x conversion improvement</span> that became globally recognized case study</div>
-                    <div class="achievement">Built mobile gaming expertise with <span class="highlight">NBA 2K MyTeam Mobile</span> across US, EMEA, Asia</div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">Key Achievements</div>
-                <div class="achievement">🏆 Transformed company from siloed to dynamic multi-objective buying approach</div>
-                <div class="achievement">📱 Navigated post-iOS14 attribution using SKAdNetwork and probabilistic modeling</div>
-                <div class="achievement">💰 Avoided <span class="highlight">seven-figure losses</span> through data-driven frameworks</div>
-                <div class="achievement">🔬 Internal thought leader on clean room and advanced analytics initiatives</div>
-                <div class="achievement">🌍 Manage partnerships with agencies across NA, EMEA, APAC</div>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">Gaming Skills</div>
-                <div class="skills-grid">
-                    <div class="skill-tag">Console Marketing</div>
-                    <div class="skill-tag">Mobile Gaming</div>
-                    <div class="skill-tag">Adjust MMP</div>
-                    <div class="skill-tag">SKAdNetwork</div>
-                    <div class="skill-tag">Meta AA</div>
-                    <div class="skill-tag">Google ADH</div>
-                    <div class="skill-tag">Amazon AMC</div>
-                    <div class="skill-tag">SQL & Python</div>
-                </div>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">About Me</div>
-                <div class="about-text">
-                    Dublin graduate who fell in love with gaming marketing and never looked back. Two-time national soccer champion turned data strategist. Vinyl collector with questionable taste in dive bars. Currently on a quest to find proper Guinness in SF (progress: disappointing). Love turning chaos into frameworks that actually work.
-                </div>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">Why Discord?</div>
-                <div class="about-text">
-                    Looking to scale what I love most: building strategic relationships and turning data into creative solutions—but for multiple gaming clients instead of just one company. Ready to bring Irish charm and systematic thinking to Discord's growing advertising solutions team.
-                </div>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">Education</div>
-                <div class="achievement">🎓 MSc Quantitative Finance - University of Amsterdam</div>
-                <div class="achievement">🎓 BA International Finance & Economics - Maynooth University (First Class Honours)</div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            Member since: The day I realized marketing could be as strategic as finance<br>
-            Status: Ready to level up with Discord's team
+            <div class="home-indicator"></div>
         </div>
     </div>
+    
+    <script>
+        function toggleSection(section) {
+            const content = document.getElementById(section + 'Content');
+            const arrow = document.getElementById(section + 'Arrow');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                // Close other sections
+                document.querySelectorAll('.expanded-content').forEach(el => {
+                    el.classList.remove('open');
+                });
+                document.querySelectorAll('.chevron').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open clicked section
+                content.classList.add('open');
+                arrow.style.transform = 'rotate(90deg)';
+            }
+        }
+    </script>
 </body>
 </html>
